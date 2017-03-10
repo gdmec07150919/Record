@@ -11,36 +11,36 @@ import java.util.UUID;
  */
 
 public class RecordLab {
-    private static  RecordLab sRecordLab;
+    private static RecordLab sRecordLab;
     private List<Record> mRecords;
 
+    public void addRecord(Record record) {
+        mRecords.add(record);
+    }
+
     public static RecordLab get(Context context) {
-        if(sRecordLab == null) {
+        if (sRecordLab == null) {
             sRecordLab = new RecordLab(context);
         }
-        return  sRecordLab;
+        return sRecordLab;
     }
-    private RecordLab(Context context){
+
+    private RecordLab(Context context) {
         mRecords = new ArrayList<>();
 
-        for(int i=0; i<100; i++) {
-            Record record = new Record();
-            record.setmTitle("记录 #" + i);
-            record.setmSolved(i % 2 == 0);
-            mRecords.add(record);
-        }
-
     }
-    public  List<Record> getRecords(){
+
+    public List<Record> getRecords() {
         return mRecords;
     }
-    public Record getRecord(UUID id){
-        for (Record record : mRecords ) {
-            if (record.getmId().equals(id)){
+
+    public Record getRecord(UUID id) {
+        for (Record record : mRecords) {
+            if (record.getmId().equals(id)) {
                 return record;
             }
         }
-        return  null;
+        return null;
     }
 
 }

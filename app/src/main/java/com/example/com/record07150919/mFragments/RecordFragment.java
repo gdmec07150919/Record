@@ -1,9 +1,7 @@
 package com.example.com.record07150919.mFragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,10 +16,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
-import com.example.com.record07150919.DatePickerFragment;
 import com.example.com.record07150919.R;
 import com.example.com.record07150919.Record;
-import com.example.com.record07150919.RecordActivity;
 import com.example.com.record07150919.RecordLab;
 
 import java.util.Date;

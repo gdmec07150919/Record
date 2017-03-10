@@ -15,7 +15,7 @@ import com.example.com.record07150919.mFragments.RecordFragment;
 import java.util.List;
 import java.util.UUID;
 
-public class RecordPagerActivity extends FragmentActivity {
+public class RecordPagerActivity extends AppCompatActivity {
     private static final String EXTRA_RECORD_ID = "com.me.android.recording.record_id";
     private ViewPager mViewPager;
     private List<Record> mRecordList;

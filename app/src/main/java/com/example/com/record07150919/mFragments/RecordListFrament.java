@@ -8,6 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -29,10 +32,37 @@ public class RecordListFrament extends Fragment {
     private RecyclerView mRecordRecylerView;
     private RecordAdapter mAdapter;
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
+        super.onCreateOptionsMenu(menu, menuInflater);
+        menuInflater.inflate(R.menu.fragment_record_list, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_item_new_record:
+                Record record = new Record();
+                RecordLab.get(getActivity()).addRecord(record);
+                Intent intent = RecordPagerActivity.newIntent(getActivity(),record.getmId());
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.v("aaabbb","kaishi2");
+        Log.v("aaabbb", "kaishi2");
         View view = inflater.inflate(R.layout.frament_record_lilist, container, false);
         mRecordRecylerView = (RecyclerView) view.findViewById(R.id.record_recyler_view);
         mRecordRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -43,17 +73,17 @@ public class RecordListFrament extends Fragment {
     private void updateUI() {
         RecordLab recordLab = RecordLab.get(getActivity());
         List<Record> records = recordLab.getRecords();
-        if(mAdapter == null) {
+        if (mAdapter == null) {
             mAdapter = new RecordAdapter(records);
             mRecordRecylerView.setAdapter(mAdapter);
-        }else {
+        } else {
             mAdapter.notifyDataSetChanged();
         }
         mAdapter = new RecordAdapter(records);
         mRecordRecylerView.setAdapter(mAdapter);
     }
 
-    private class RecordHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class RecordHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView mTitleTextView;
         private TextView mDateTextView;
         private CheckBox mSolvedCheckBox;
@@ -66,7 +96,8 @@ public class RecordListFrament extends Fragment {
             mDateTextView = (TextView) itemView.findViewById(R.id.list_item_record_date_text_view);
             mSolvedCheckBox = (CheckBox) itemView.findViewById(R.id.list_item_record_solved_check_box);
         }
-        public void bindRecord(Record record){
+
+        public void bindRecord(Record record) {
             mRecord = record;
             mTitleTextView.setText(mRecord.getmTitle());
             mDateTextView.setText(mRecord.getmDate().toString());
@@ -75,7 +106,7 @@ public class RecordListFrament extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Intent intent = RecordPagerActivity.newIntent(getActivity(),mRecord.getmId());
+            Intent intent = RecordPagerActivity.newIntent(getActivity(), mRecord.getmId());
             startActivity(intent);
         }
     }
@@ -83,6 +114,7 @@ public class RecordListFrament extends Fragment {
     private class RecordAdapter extends RecyclerView.Adapter<RecordHolder> {
 
         private List<Record> mRecords;
+
         public RecordAdapter(List<Record> records) {
             mRecords = records;
         }

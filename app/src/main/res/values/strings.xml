@@ -6,17 +6,6 @@
     <string name="record_title_hint">输入标题</string>
     <string name="record_details_label">见证</string>
     <string name="record_solved_label">处理</string>
-    <string name="mc"></string>
-    <string name="mPlus"></string>
-    <string name="mMinus"></string>
-    <string name="mr"></string>
-    <string name="C"></string>
-    <string name="PlusAndMinusLog"></string>
-    <string name="DivisionLog"></string>
-    <string name="MultiplicationLog"></string>
-    <string name="Number7"></string>
-    <string name="Number8"></string>
-    <string name="Number9"></string>
-    <string name="SubtractionLog"></string>
+    <string name="date_picker">记录日期</string>
 
 </resources>

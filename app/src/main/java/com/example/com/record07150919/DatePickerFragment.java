@@ -1,7 +1,9 @@
 package com.example.com.record07150919;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,14 +15,15 @@ import android.widget.DatePicker;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Created by 10449 on 2017/3/10.
  */
 
 public class DatePickerFragment extends DialogFragment {
-    private static final String EXTRA_DATE = "com.me.android.recording.date";
-    private static final String ARG_DATE = "date";
+    public static final String EXTRA_DATE = "com.me.android.recording.date";
+    public static final String ARG_DATE = "date";
     private DatePicker mDatePicker;
     @NonNull
     @Override
@@ -36,7 +39,17 @@ public class DatePickerFragment extends DialogFragment {
 
        mDatePicker = (DatePicker) view.findViewById(R.id.dialog_date_picker);
         mDatePicker.init(year,month,day,null);
-        return new AlertDialog.Builder(getActivity()).setView(view).setTitle(R.string.date_picker).setPositiveButton(android.R.string.ok,null).create();
+        return new AlertDialog.Builder(getActivity()).setView(view).setTitle(R.string.date_picker) .setPositiveButton(android.R.string.ok,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        int year =mDatePicker.getYear();
+                        int month = mDatePicker.getMonth();
+                        int day = mDatePicker.getDayOfMonth();
+                        Date date1 = new GregorianCalendar(year,month,day) .getTime();
+                        sendResult(Activity.RESULT_OK, date1);
+                    }
+                         }).create();
     }
 
     public static DatePickerFragment newInstance(Date date) {

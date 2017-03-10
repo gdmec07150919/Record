@@ -17,6 +17,7 @@ import com.example.com.record07150919.R;
 import com.example.com.record07150919.Record;
 import com.example.com.record07150919.RecordActivity;
 import com.example.com.record07150919.RecordLab;
+import com.example.com.record07150919.RecordPagerActivity;
 
 import java.util.List;
 
@@ -74,7 +75,7 @@ public class RecordListFrament extends Fragment {
 
         @Override
         public void onClick(View v) {
-            Intent intent = RecordActivity.newIntent(getActivity(),mRecord.getmId());
+            Intent intent = RecordPagerActivity.newIntent(getActivity(),mRecord.getmId());
             startActivity(intent);
         }
     }

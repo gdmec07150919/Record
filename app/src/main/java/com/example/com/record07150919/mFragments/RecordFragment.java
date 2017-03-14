@@ -48,7 +48,6 @@ public class RecordFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // UUID recordId = (UUID)getActivity().getIntent().getSerializableExtra(RecordActivity.EXTRA_RECORD_ID);
         UUID recordId = (UUID) getArguments().getSerializable(ARG_RECORD_ID);
         mRecord = RecordLab.get(getActivity()).getRecord(recordId);
     }
@@ -111,8 +110,10 @@ public class RecordFragment extends Fragment {
             Date date = (Date) intent.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mRecord.setmDate(date);
             mDateButton.setText(mRecord.getmDate().toString());
+
         }
     }
+    @Override public void onPause(){     super.onPause();     RecordLab.get(getActivity()).updateRecord(mRecord); }
 }
 
 

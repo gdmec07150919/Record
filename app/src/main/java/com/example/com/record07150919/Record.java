@@ -13,7 +13,10 @@ public class Record {
     private Date mDate;
     private boolean mSolved;
     public Record () {
-        mId = UUID.randomUUID();
+      this(UUID.randomUUID());
+    }
+    public Record (UUID uuid){
+        mId = uuid;
         mDate = new Date();
     }
 

@@ -6,7 +6,7 @@ package com.example.com.record07150919.SQL;
 
 public class RecordDbSchema {
     public static final class RecordTable {
-        public static final String NANE = "records";
+        public static final String NAME = "records";
 
         public static final class Cols {
             public static final String UUID = "uuid";

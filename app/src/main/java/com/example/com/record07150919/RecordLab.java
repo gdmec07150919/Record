@@ -21,7 +21,7 @@ import java.util.UUID;
 
 public class RecordLab {
     private static RecordLab sRecordLab;
-    private List<Record> mRecords;
+/*    private List<Record> mRecords;*/
     private Context mContext;
     private SQLiteDatabase mDatabase;
 
@@ -42,7 +42,7 @@ public class RecordLab {
     private RecordLab(Context context) {
         mContext = context.getApplicationContext();
         mDatabase = new RecordBaseHelper(mContext).getWritableDatabase();
-        mRecords = new ArrayList<>();
+/*        mRecords = new ArrayList<>();*/
     }
 
     public List<Record> getRecords() {

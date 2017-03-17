@@ -113,7 +113,10 @@ public class RecordFragment extends Fragment {
 
         }
     }
-    @Override public void onPause(){     super.onPause();     RecordLab.get(getActivity()).updateRecord(mRecord); }
+    @Override public void onPause(){     super.onPause();
+        mRecord.setmTitle(mTitleField.getText().toString());
+        RecordLab.get(getActivity()).updateRecord(mRecord);
+    }
 }
 
 
